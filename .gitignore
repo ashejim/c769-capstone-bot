@@ -1,0 +1,36 @@
+# ─────────────────────────────────────────────────────────────
+# Defense-in-depth. This repo is authored to contain NO student
+# data in the first place; these rules are a backstop so nothing
+# data-shaped can ever be committed by accident.
+# ─────────────────────────────────────────────────────────────
+
+# Any raw/derived data (emails, clusters, feedback, indexes)
+*.jsonl
+*.csv
+*.export/
+*.pst
+*.mbox
+*.eml
+knowledge_base/
+draft/
+feedback*.jsonl
+
+# Secrets / config that could carry credentials
+*.env
+.env*
+*secret*
+*token*
+*_smtp_*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
