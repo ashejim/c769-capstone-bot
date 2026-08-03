@@ -1,8 +1,8 @@
-# Course Capstone FAQ Bot — a retrieval-grounded triage assistant for a university capstone
+# Course FAQ Bot Framework — build an evaluated, privacy-safe RAG assistant for any course
 
-**A case study in building and evaluating an AI-in-education system end-to-end.**
+**A reusable framework for turning a course's own materials into a retrieval-grounded assistant — and a case study in doing it responsibly. Proven end-to-end on one capstone.**
 
-> This is a **sanitized portfolio case study** of a working system I built for the course I teach (WGU **C769 IT Capstone**). It runs privately on my own hardware. Student email was used **only for offline gap analysis, and only after a rigorous PII-scrubbing stage** — the bot never operates on identifying student data (see [Privacy](#privacy--data-governance)). **This repository contains no student data** — only the architecture, the engineering decisions, and illustrative, data-free code.
+> This is a **sanitized portfolio case study** of a framework I built to generalize across courses, proven on the one I teach (WGU **C769 IT Capstone**). It runs privately on my own hardware. Student email was used **only for offline gap analysis, and only after a rigorous PII-scrubbing stage** — the bot never operates on identifying student data (see [Privacy](#privacy--data-governance)). **This repository contains no student data** — only the architecture, the engineering decisions, and illustrative, data-free code.
 
 Author: **James (Jim) Ashe, PhD** — mathematician, 20-year educator, and the instructor for this course.
 
@@ -16,7 +16,9 @@ Most of these already have canonical answers in the course materials. The instru
 
 ## What I built
 
-A local-first **RAG (retrieval-augmented generation) chatbot**, framed not as a one-shot project but as a **5-stage maintenance loop**:
+**A reusable framework, not a one-off bot.** This was designed from the start to work for *any* course — that goal drove the design decisions throughout. The system is a **config-driven pipeline**: point it at a course's content in a single config file (`courses.yaml`) and it produces a retrieval-grounded assistant — knowledge-base indexing, retrieval, LLM grounding, evaluation, and the feedback loop all generalize across courses. I proved it end-to-end on the IT Capstone I teach (**C769**); the CS and Data Analytics capstones are already scaffolded as config placeholders. The specific course was the proof-of-concept case; the framework is the deliverable.
+
+Under the hood it's a local-first **RAG (retrieval-augmented generation)** system, framed not as a one-shot project but as a **5-stage maintenance loop**:
 
 1. **Build/refresh** a baseline FAQ from existing course resources.
 2. **Mine** a year of course email for the gaps the FAQ doesn't cover.
