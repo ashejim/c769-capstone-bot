@@ -73,7 +73,7 @@ This is the same shape of work that underlies RLHF and model-evaluation pipeline
 
 ## Engineering decisions that mattered
 
-These are the parts I'd talk through in an interview — the places where naïve RAG fails and domain knowledge earns its keep.
+The places where naïve RAG fails and domain knowledge earns its keep.
 
 **1. Retrieval quality is a *data-shape* problem, not a model problem.**
 A critical reference doc (the "Task 2 → Task 3 bridge") kept losing retrieval to less-relevant chunks. Tracing it: the content was trapped in a **PDF table**. Faithful `pypdf` extraction produced interleaved garbage that ranked **#56** of 121 chunks for its own topic. Re-extracting to clean markdown tables got it to **#35**. Only when I restructured the tabular content into **prose under semantic headings** did it rank **#2–#4** — retrievable at last. Lesson: *markdown tables (pipes, `<br>`, empty cells) are semantic filler that drown the real signal under an embedding cap.* Fix the input shape before touching the model.
